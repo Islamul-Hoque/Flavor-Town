@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaThumbsUp, FaThumbsDown, FaStar } from "react-icons/fa";
 
 const ReviewCard = ({ review }) => {
@@ -17,6 +17,10 @@ const ReviewCard = ({ review }) => {
     month: "short",
     year: "numeric",
   });
+
+  // local state for like/dislike
+  const [likesCount, setLikesCount] = useState(likes.length); 
+  const [dislikesCount, setDislikesCount] = useState(0);
 
   return (
     <div className="bg-white rounded-xl shadow-md p-5 flex flex-col gap-4">
@@ -47,16 +51,22 @@ const ReviewCard = ({ review }) => {
       {/* Actions */}
       <div className="flex items-center justify-between mt-2">
         <p className="text-sm text-gray-600">
-          👍 {likes.length} people liked this
+          👍 {likesCount} people liked this
         </p>
         <div className="flex gap-3">
-          <button className="btn bg-green-500 hover:bg-green-600 text-white flex items-center gap-2 px-3 py-1 rounded-md">
+          <button
+            onClick={() => setLikesCount(likesCount + 1)}
+            className="btn bg-green-500 hover:bg-green-600 text-white flex items-center gap-2 px-3 py-1 rounded-md"
+          >
             <FaThumbsUp className="w-4 h-4" />
-            Like
+            Like ({likesCount})
           </button>
-          <button className="btn bg-red-500 hover:bg-red-600 text-white flex items-center gap-2 px-3 py-1 rounded-md">
+          <button
+            onClick={() => setDislikesCount(dislikesCount + 1)}
+            className="btn bg-red-500 hover:bg-red-600 text-white flex items-center gap-2 px-3 py-1 rounded-md"
+          >
             <FaThumbsDown className="w-4 h-4" />
-            Dislike
+            Dislike ({dislikesCount})
           </button>
         </div>
       </div>
