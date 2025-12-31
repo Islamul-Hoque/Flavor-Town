@@ -1,4 +1,4 @@
-import FoodCard from "@/components/FoodCard/FoodCard";
+import FoodCard from "@/components/Card/FoodCard";
 import React from "react";
 import { resolve } from "styled-jsx/css";
 

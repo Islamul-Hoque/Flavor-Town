@@ -1,4 +1,6 @@
 import React from "react";
+import { FaPlay } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 const getSingleFood = async (id) => {
   const res = await fetch(
@@ -25,12 +27,12 @@ const page = async ({ params }) => {
 
   return (
     <div className="container mx-auto flex justify-center items-center min-h-screen bg-gray-900">
-      <div className="bg-white rounded-2xl shadow-lg max-w-md w-full p-6">
+      <div className="bg-white rounded-2xl shadow-lg w-[80%] p-6">
         {/* Image */}
         <img
           src={foodImg}
           alt={title}
-          className="w-full h-64 object-cover rounded-xl mb-4 shadow-md"
+          className="w-full h-80 object-cover rounded-xl mb-4 shadow-md"
         />
 
         {/* Body */}
@@ -47,19 +49,26 @@ const page = async ({ params }) => {
         </p>
 
         {/* Buttons side by side */}
-        <div className="flex gap-4">
-          <a
-            href={video}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn bg-yellow-500 text-white hover:bg-yellow-600 text-center"
-          >
-            Watch Video
-          </a>
-          <button className="btn bg-green-600 text-white hover:bg-green-700">
-            Add to Cart
-          </button>
-        </div>
+
+
+<div className="flex gap-4">
+  <a
+    href={video}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn flex-1 bg-indigo-500 text-white hover:bg-indigo-600 flex items-center justify-center gap-2"
+  >
+    <FaPlay className="w-5 h-5" />
+    Watch Video
+  </a>
+  <button className="btn flex-1 bg-teal-500 text-white hover:bg-teal-600 flex items-center justify-center gap-2">
+    <FaShoppingCart className="w-5 h-5" />
+    Add to Cart
+  </button>
+</div>
+
+
+
       </div>
     </div>
   );
