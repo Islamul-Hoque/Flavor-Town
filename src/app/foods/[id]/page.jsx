@@ -2,7 +2,7 @@ import React from "react";
 
 const getSingleFood = async (id) => {
   const res = await fetch(
-    `https://taxi-kitchen-api.vercel.app/api/v1/foods/52794`,
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
     { cache: "no-store" }
   );
   const data = await res.json();
@@ -10,46 +10,56 @@ const getSingleFood = async (id) => {
 };
 
 const page = async ({ params }) => {
-  const { id } = params;
-  
+  const { id } = await params; 
   const food = await getSingleFood(id);
+
   if (!food || Object.keys(food).length === 0) {
-  return <h2 className="text-center text-red-500 text-xl">Food not Found</h2>;
-}
-
-
-  if (!food) {
-    return <h2 className="text-center text-red-500 text-xl">Food not Found</h2>;
+    return (
+      <h2 className="text-center text-red-500 text-xl">
+        Food not Found
+      </h2>
+    );
   }
 
   const { title, foodImg, price, category, area, video } = food;
 
   return (
-    <div className="p-5 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-3 text-white">{title}</h2>
-      <img
-        src={foodImg}
-        alt={title}
-        className="w-full max-w-md rounded-xl mb-4 shadow-lg"
-      />
-      <div className="space-y-2 text-gray-200">
-        <p>
+    <div className="container mx-auto flex justify-center items-center min-h-screen bg-gray-900">
+      <div className="bg-white rounded-2xl shadow-lg max-w-md w-full p-6">
+        {/* Image */}
+        <img
+          src={foodImg}
+          alt={title}
+          className="w-full h-64 object-cover rounded-xl mb-4 shadow-md"
+        />
+
+        {/* Body */}
+        <h2 className="text-2xl font-bold text-gray-800 mb-3">{title}</h2>
+        <p className="text-gray-700 mb-1">
           <span className="font-semibold">Category:</span> {category}
         </p>
-        <p>
+        <p className="text-gray-700 mb-1">
           <span className="font-semibold">Area:</span> {area}
         </p>
-        <p>
-          <span className="font-semibold">Price:</span> ৳ {price}
+        <p className="text-gray-800 font-semibold mb-4">
+          <span className="font-semibold">Price:</span>{" "}
+          <span className="text-yellow-600">৳ {price}</span>
         </p>
-        <a
-          href={video}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-3 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
-        >
-          Watch Recipe Video
-        </a>
+
+        {/* Buttons side by side */}
+        <div className="flex gap-4">
+          <a
+            href={video}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn bg-yellow-500 text-white hover:bg-yellow-600 text-center"
+          >
+            Watch Video
+          </a>
+          <button className="btn bg-green-600 text-white hover:bg-green-700">
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
