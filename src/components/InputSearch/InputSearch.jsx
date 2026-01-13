@@ -1,18 +1,24 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
-import { useRouter } from "next/navigation";
 
 const InputSearch = () => {
-  const router = useRouter();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const value = form.search.value;
-    const encoded = encodeURIComponent(value.trim());
-    router.push(`?search=${encoded}`);
-  };
+const router = useRouter();
+const params = useSearchParams();
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const value = form.search.value;
+
+  const newParams = new URLSearchParams(params.toString());
+  newParams.set("search", value);
+
+  router.push(`?${newParams.toString()}`);
+};
+
 
   return (
     <div className="my-5">
