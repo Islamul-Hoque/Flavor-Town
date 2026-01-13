@@ -26,11 +26,7 @@ const ReviewCard = ({ review }) => {
     <div className="bg-white rounded-xl shadow-md p-5 flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <img
-          src={photo}
-          alt={user}
-          className="w-14 h-14 rounded-full object-cover border-2 border-yellow-500"
-        />
+        <img  src={photo} alt={user}  className="w-14 h-14 rounded-full object-cover border-2 border-yellow-500"  />
         <div>
           <h3 className="text-lg font-semibold text-gray-800">{user}</h3>
           <p className="text-sm text-gray-500">{email}</p>

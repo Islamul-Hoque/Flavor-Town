@@ -27,13 +27,13 @@ const page = async ({ params }) => {
 
   return (
     <div className="container mx-auto flex justify-center items-center min-h-screen bg-gray-900">
+ 
+    
+
+
       <div className="bg-white rounded-2xl shadow-lg w-[80%] p-6">
         {/* Image */}
-        <img
-          src={foodImg}
-          alt={title}
-          className="w-full h-80 object-cover rounded-xl mb-4 shadow-md"
-        />
+        <img src={foodImg}  alt={title}  className="w-full h-80 object-cover rounded-xl mb-4 shadow-md"  />
 
         {/* Body */}
         <h2 className="text-2xl font-bold text-gray-800 mb-3">{title}</h2>
