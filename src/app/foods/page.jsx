@@ -3,6 +3,9 @@ import React from "react";
 import { resolve } from "styled-jsx/css";
 import CartItems from "./CartItems";
 import InputSearch from "@/components/InputSearch/InputSearch";
+import style from "./foods.module.css"
+
+
 
 const getFoods = async (search) => {
   const res = await fetch(
@@ -19,7 +22,7 @@ const FoodsPage = async ({ searchParams }) => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold">
+      <h2 className={`text-4xl font-bold ${style.bgRed} `}>
         Total <span className="text-yellow-500">{foods.length}</span> Foods Found
       </h2>
 

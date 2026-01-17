@@ -2,10 +2,15 @@ import React from "react";
 import { FaPlay } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 
+export function generateStaticParams() {
+  return [{ id: '52930' }, { id: '52843' }, { id: '53024' }]
+}
+
 const getSingleFood = async (id) => {
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
-    { cache: "no-store" }
+    
+    {next: { revalidate: 5 } }
   );
   const data = await res.json();
   return data.details;
