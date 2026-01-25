@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import CartProvider from "./context/CartProvider";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <header className="px-5 py-2 flex items-center justify-between gap-5 bg-stone-800">
           <Link href={'/'}><img src="/FlavorTown.png" alt="" className="w-[120px]" /></Link>
           <div className="space-x-5">
+            <Link className="btn" href="/">  Home</Link>
             <Link className="btn" href="/foods">  Food</Link>
             <Link className="btn" href="/reviews">   Reviews  </Link>
             <Link className="btn" href="/register">   Register  </Link>
@@ -39,6 +41,9 @@ export default function RootLayout({ children }) {
             {children}
           </CartProvider>
         </main>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );
